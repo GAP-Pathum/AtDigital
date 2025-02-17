@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import logo from '../assets/images/Logo.png';
+import colors from '../context/colors';
 
 const Navbar = () => {
     const [isMobile, setIsMobile] = useState(false);
@@ -9,7 +10,7 @@ const Navbar = () => {
     useEffect(() => {
         const handleResize = () => {
             setIsMobileView(window.innerWidth <= 768);
-            if(window.innerWidth > 768) setIsMobile(false);
+            if (window.innerWidth > 768) setIsMobile(false);
         };
 
         window.addEventListener('resize', handleResize);
@@ -17,10 +18,10 @@ const Navbar = () => {
     }, []);
 
     return (
-        <nav className="flex items-center justify-between px-4 md:px-8 py-4" style={{ backgroundColor: '#4F46E5' }}>
-            {/* Brand logo */}
+        <nav className="flex items-center justify-between px-4 md:px-8 py-4" style={{ backgroundColor: colors.primary }}>
+            {/* logo */}
             <div className="flex items-center flex-shrink-0">
-                <img src={logo} alt="Logo" className="h-8 md:h-10 w-auto"/>
+                <img src={logo} alt="Logo" className="h-8 md:h-10 w-auto" />
             </div>
 
             {/* Desktop Navigation */}
@@ -32,7 +33,7 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <button 
+            <button
                 className="md:hidden p-2 text-white"
                 onClick={() => setIsMobile(!isMobile)}
             >
@@ -41,9 +42,9 @@ const Navbar = () => {
 
             {/* Mobile Menu Dropdown */}
             {isMobileView && (
-                <div className={`absolute top-0 left-0 w-full bg-white transition-transform duration-300 ${isMobile ? 'translate-x-' : '-translate-x-full'} md:hidden`}>
+                <div className={`absolute top-0 left-0 w-full bg-white transition-transform duration-300 ${isMobile ? 'translate-x-0' : '-translate-x-full'} md:hidden`}>
                     <div className="flex flex-col p-4 space-y-4">
-                        <button 
+                        <button
                             className="self-end p-2 text-black"
                             onClick={() => setIsMobile(false)}
                         >
