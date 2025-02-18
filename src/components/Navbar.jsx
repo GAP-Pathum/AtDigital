@@ -18,7 +18,7 @@ const Navbar = () => {
     }, []);
 
     return (
-        <nav className="flex items-center justify-between px-4 md:px-8 py-4" style={{ backgroundColor: colors.primary }}>
+        <nav className="relative flex items-center justify-between px-4 md:px-8 py-4" style={{ backgroundColor: colors.primary, zIndex: 1000 }}>
             {/* logo */}
             <div className="flex items-center flex-shrink-0">
                 <img src={logo} alt="Logo" className="h-8 md:h-10 w-auto" />
@@ -42,7 +42,7 @@ const Navbar = () => {
 
             {/* Mobile Menu Dropdown */}
             {isMobileView && (
-                <div className={`absolute top-0 left-0 w-full bg-white transition-transform duration-300 ${isMobile ? 'translate-x-0' : '-translate-x-full'} md:hidden`}>
+                <div className={`absolute top-0 left-0 w-full bg-white transition-transform duration-300 ${isMobile ? 'translate-x-0' : '-translate-x-full'} md:hidden`} style={{ zIndex: 999 }}>
                     <div className="flex flex-col p-4 space-y-4">
                         <button
                             className="self-end p-2 text-black"
